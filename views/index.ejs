@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stocks Overview</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
+  
+    body {
+      font-family: 'Inconsolata', monospace;
+      margin: 0;
+      padding: 0;
+      background: #0c0c0c;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    h1 {
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #21ce99;
+    }
+  
+    table {
+      width: 90%;
+      border-collapse: separate;
+      border-spacing: 0 15px;
+    }
+  
+    th,
+    td {
+      padding: 15px;
+      text-align: left;
+    }
+  
+    th {
+      background-color: rgba(33, 206, 153, 0.1);
+      color: #21ce99;
+      border-radius: 10px 10px 0 0;
+      font-weight: 700;
+    }
+  
+    td {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: #b3b3b3;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+  
+    img {
+      border-radius: 50%;
+    }
+  
+    tr {
+      background: none;
+    }
+  </style>
+  
+  
+  
+</head>
+<body>
+  <h1>Stocks Overview</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Stock Name</th>
+        <th>Symbol</th>
+        <th>Company Logo</th>
+        <th>Current Price</th>
+        <th>Market Cap</th>
+        <th>Percent Change</th>
+        <th>Volume</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% stocks.forEach(stock => { %>
+        <tr>
+          <td><%= stock.name %></td>
+          <td><a href="/stock/<%= stock.symbol %>"><%= stock.symbol %></a></td>
+          <td><img src="<%= stock.logo %>" alt="<%= stock.name %> Logo" width="50" height="50"></td>
+          <td><%= stock.current_price %></td>
+          <td><%= stock.market_cap %></td>
+          <td><%= stock.percent_change.toFixed(2) %> %</td>
+          <td><%= stock.volume %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
+
